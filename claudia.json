@@ -1,0 +1,7 @@
+{
+  "lambda": {
+    "role": "darksky-poller-aws-iot-executor",
+    "name": "darksky-poller-aws-iot",
+    "region": "eu-west-2"
+  }
+}

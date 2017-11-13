@@ -1,0 +1,24 @@
+{
+  "name": "darksky-poller-aws-iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "create": "claudia create --name darksky-poller-aws-iot --handler main.handler --region eu-west-2",
+    "check-logs": "aws logs filter-log-events --log-group /aws/lambda/$npm_package_name --region eu-west-2 ",
+    "schedule": "claudia add-scheduled-event --event cron.json --name darksky-poller-aws-iot-cron --rate '1 minute'",
+    "deploy": "claudia update"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "claudia": "^2.14.2",
+    "mocha": "^3.5.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.116.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
