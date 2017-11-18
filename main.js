@@ -6,8 +6,8 @@ const handler = (event, context, callback) =>
     .then(response =>
       Promise.all(['currently', 'minutely', 'hourly', 'daily'].map(k => updateIoT(k, response)))
     )
-    .catch(err => callback(err))
-    .then(responses => callback(null, responses))
+    .catch(err => callback(null, "NOOK err"))
+    .then(responses => callback(null, "OK"))
 
 const updateIoT = (which, weather) => new Promise((resolve, reject) =>
   new AWS.IotData({endpoint: process.env.AWS_IOT_ENDPOINT}).updateThingShadow({
@@ -25,6 +25,7 @@ const updateIoT = (which, weather) => new Promise((resolve, reject) =>
 )
 
 const get_weather = () => getContent(`https://api.darksky.net/forecast/${DARKSKY_API_KEY}/${LAT},${LON}?exclude=flags&units=uk2`)
+  .then(response => response.replace(new RegExp("emperature", 'g'), "emp"))
   .then(JSON.parse)
   .then(response => {
     response.hourly.data = response.hourly.data.slice(0, 24)
