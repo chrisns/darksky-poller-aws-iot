@@ -12,11 +12,7 @@ const handler = (event, context, callback) =>
 const updateIoT = (which, weather) => new Promise((resolve, reject) =>
   new AWS.IotData({endpoint: process.env.AWS_IOT_ENDPOINT}).updateThingShadow({
     thingName: `weather_${which}`,
-    payload: JSON.stringify({
-      state: {
-        desired: weather[which]
-      }
-    })
+    payload: JSON.stringify({state: {reported: weather[which]}})
   }, (err, result) => {
     if (err)
       return reject(err)
