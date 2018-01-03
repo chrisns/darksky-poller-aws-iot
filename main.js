@@ -24,7 +24,7 @@ const get_weather = () => getContent(`https://api.darksky.net/forecast/${DARKSKY
   .then(response => response.replace(new RegExp("emperature", 'g'), "emp"))
   .then(JSON.parse)
   .then(response => {
-    response.hourly.data = response.hourly.data.slice(0, 24)
+    response.hourly.data = response.hourly.data.slice(0, 16)
     return response
   })
 
