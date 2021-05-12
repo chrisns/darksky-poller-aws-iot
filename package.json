@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "claudia": "^5.13.0"
+    "claudia": "^5.13.1"
   },
   "optionalDependencies": {
     "aws-sdk": "^2.905.0"
